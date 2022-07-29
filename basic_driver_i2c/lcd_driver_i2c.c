@@ -1,5 +1,5 @@
 /*
- * lcd_i2c_driver.c
+ * lcd_driver_i2c.c
  *
  *  Created on: 2 juil. 2022
  *      Author: LECLERCQ Antonin
