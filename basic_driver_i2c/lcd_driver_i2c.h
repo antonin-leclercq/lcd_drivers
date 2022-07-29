@@ -1,12 +1,12 @@
 /*
- * lcd_i2c_driver.h
+ * lcd_driver_i2c.h
  *
  *  Created on: 2 juil. 2022
  *      Author: LECLERCQ Antonin
  */
 
-#ifndef INC_LCD_I2C_DRIVER_H_
-#define INC_LCD_I2C_DRIVER_H_
+#ifndef INC_LCD_DRIVER_I2C_H_
+#define INC_LCD_DRIVER_I2C_H_
 
 #include "stm32f7xx.h"
 #include "simple_delay.h"
@@ -70,4 +70,4 @@ static inline void status_led(const I2C_STATUS s)
 	}
 }
 
-#endif /* INC_LCD_I2C_DRIVER_H_ */
+#endif /* INC_LCD_DRIVER_I2C_H_ */
