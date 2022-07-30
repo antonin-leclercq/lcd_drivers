@@ -85,21 +85,21 @@ void LCD_init_i2c(void)
 	GPIOB->MODER |= (0x01 << GPIO_MODER_MODER14_Pos) | (0x01 << GPIO_MODER_MODER0_Pos) | (0x01 << GPIO_MODER_MODER7_Pos);
 
 	// HDD44780 requires a delay after power up (100ms should be plenty enough)
-	delay_ms(100);
+	TIMER_delay_ms(100);
 
 	/*
 	 * Display only works in 4 bit mode because there are only 8 data lines
 	 */
 	LCD_send_command_i2c(lcd_set_to_4bit_sequence[0]);
-	delay_ms(100);
+	TIMER_delay_ms(100);
 	LCD_send_command_i2c(lcd_set_to_4bit_sequence[1]);
-	delay_ms(100);
+	TIMER_delay_ms(100);
 	LCD_send_command_i2c(lcd_set_to_4bit_sequence[2]);
-	delay_ms(100);
+	TIMER_delay_ms(100);
 
 	// Send 0x28 (function set)
 	LCD_send_command_i2c(FUNCTION_SET);
-	delay_ms(100);
+	TIMER_delay_ms(100);
 }
 
 void LCD_send_data_i2c(const uint8_t data)
@@ -217,7 +217,7 @@ void LCD_set_cursorXY_i2c(const uint8_t row, const uint8_t column)
 	}
 }
 
-void INIT_delay_timer_6(void)
+void TIMER_delay_init(void)
 {
 	/*
 	 * APB1 timer clock is double that of the peripheral clock
@@ -245,7 +245,7 @@ void INIT_delay_timer_6(void)
 	TIM6->CR1 &= ~TIM_CR1_CEN;
 }
 
-void delay_ms(uint32_t ms)
+void TIMER_delay_ms(uint32_t ms)
 {
 	// Reset the timer
 	TIM6->EGR |= TIM_EGR_UG;
