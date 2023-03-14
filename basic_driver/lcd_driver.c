@@ -110,14 +110,14 @@ void LCD_send_data(const uint8_t data)
 	/* Send Upper nibble first */
 	GPIOB->ODR |= (data >> 4) & 0x0F;
 
-	LCD_DISPLAY_SEND_DATA_PROCEDURE();
+	LCD_send_data_pulse();
 
 	TIMER_delay_ms(1);
 
 	/* Send Lower nibble then */
 	GPIOB->ODR |= data & 0x0F;
 
-	LCD_DISPLAY_SEND_DATA_PROCEDURE();
+	LCD_send_data_pulse();
 
 	TIMER_delay_ms(1);
 
